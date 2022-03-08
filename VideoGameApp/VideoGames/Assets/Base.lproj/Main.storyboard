@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -24,10 +25,10 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-us-mzF" userLabel="Game Poster">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="377"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs0-dh-mDh" userLabel="Game Detail">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs0-dh-mDh" userLabel="Game Detail">
                                         <rect key="frame" x="0.0" y="397" width="414" height="377"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -46,7 +47,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ltg-R9-DMr"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="R2M-dI-ADA" firstAttribute="leading" secondItem="ltg-R9-DMr" secondAttribute="leading" id="3dO-d2-aKN"/>
                             <constraint firstItem="R2M-dI-ADA" firstAttribute="top" secondItem="ltg-R9-DMr" secondAttribute="top" id="AJV-54-fIk"/>
@@ -74,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="739.13043478260875" y="-215.625"/>
         </scene>
-        <!--Favourite Games View Controller-->
+        <!--Favourite Games-->
         <scene sceneID="7U0-qe-jRB">
             <objects>
                 <viewController id="aVO-1k-ZEZ" customClass="FavouriteGamesViewController" customModule="VideoGamesApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,7 +86,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hoA-cA-a4C">
                                 <rect key="frame" x="0.0" y="146" width="414" height="750"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lkl-qq-IeI">
                                     <size key="itemSize" width="204" height="267"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -143,7 +144,8 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQJ-F9-L0J"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstItem="rPA-xf-lzd" firstAttribute="leading" secondItem="hoA-cA-a4C" secondAttribute="leading" id="1Ur-iJ-cMw"/>
                             <constraint firstItem="rQJ-F9-L0J" firstAttribute="top" secondItem="rPA-xf-lzd" secondAttribute="top" constant="-2" id="FqJ-L8-mZP"/>
@@ -152,7 +154,7 @@
                             <constraint firstItem="rPA-xf-lzd" firstAttribute="trailing" secondItem="hoA-cA-a4C" secondAttribute="trailing" id="uQK-mb-Y9c"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xqv-2c-NWX"/>
+                    <navigationItem key="navigationItem" title="Favourite Games" largeTitleDisplayMode="always" id="xqv-2c-NWX"/>
                     <connections>
                         <outlet property="collectionView" destination="hoA-cA-a4C" id="OLc-dP-Q05"/>
                         <outlet property="flowLayout" destination="Lkl-qq-IeI" id="lX9-ty-eho"/>
@@ -167,7 +169,9 @@
         <scene sceneID="hT5-DY-gWS">
             <objects>
                 <navigationController title="Favorites" automaticallyAdjustsScrollViewInsets="NO" id="ICe-c1-QGF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" systemItem="favorites" id="uRe-VO-jPU"/>
+                    <tabBarItem key="tabBarItem" title="" image="heart.fill" catalog="system" selectedImage="heart.fill" id="uRe-VO-jPU">
+                        <color key="badgeColor" systemColor="systemOrangeColor"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gsC-zu-Yb8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -187,7 +191,7 @@
             <objects>
                 <navigationController title="Home" automaticallyAdjustsScrollViewInsets="NO" id="SUn-pS-eYU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" selectedImage="homekit" id="VS1-4B-v5W">
-                        <color key="badgeColor" systemColor="systemBlueColor"/>
+                        <color key="badgeColor" systemColor="systemOrangeColor"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gDc-j6-FeE">
@@ -203,7 +207,7 @@
             </objects>
             <point key="canvasLocation" x="-1943" y="-631"/>
         </scene>
-        <!--Display Games View Controller-->
+        <!--Games-->
         <scene sceneID="a14-Jv-uQj">
             <objects>
                 <viewController id="7Kb-QB-up7" customClass="DisplayGamesViewController" customModule="VideoGamesApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -221,9 +225,10 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YJg-D2-clK">
-                                <rect key="frame" x="0.0" y="367" width="414" height="446"/>
+                                <rect key="frame" x="0.0" y="367" width="414" height="434"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="deviceWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="AccentColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kik-0a-YGf">
                                     <size key="itemSize" width="373" height="139"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -283,7 +288,7 @@
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q2f-mb-ht4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q2f-mb-ht4" firstAttribute="trailing" secondItem="i5g-1p-Oy3" secondAttribute="trailing" constant="8" id="2tH-HG-VHD"/>
                             <constraint firstItem="i5g-1p-Oy3" firstAttribute="leading" secondItem="q2f-mb-ht4" secondAttribute="leading" constant="8" id="9KX-LI-TaP"/>
@@ -293,7 +298,7 @@
                             <constraint firstItem="q2f-mb-ht4" firstAttribute="trailing" secondItem="XwI-WC-3Hb" secondAttribute="trailing" constant="20" id="gbT-GG-Tly"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sXb-7E-6Zg"/>
+                    <navigationItem key="navigationItem" title="Games" largeTitleDisplayMode="always" id="sXb-7E-6Zg"/>
                     <connections>
                         <outlet property="collectionView" destination="YJg-D2-clK" id="8lr-vV-xGe"/>
                         <outlet property="flowLayout" destination="kik-0a-YGf" id="ac5-zN-7gS"/>
@@ -315,8 +320,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" systemColor="systemTealColor"/>
-                        <color key="barTintColor" systemColor="tertiaryLabelColor"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                        <color key="barTintColor" systemColor="systemOrangeColor"/>
+                        <color key="selectedImageTintColor" systemColor="systemOrangeColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="SUn-pS-eYU" kind="relationship" relationship="viewControllers" id="OMA-lG-7dR"/>
@@ -358,29 +364,20 @@
         <image name="PosterPlaceholder" width="256" height="256"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -56,6 +56,7 @@ class DisplayGamesViewController: UIViewController {
         flowLayout.minimumLineSpacing = 10
         initialY = collectionView.center.y
         updatedY = initialY - pageView.frame.height - 20
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemOrange]
     }
     
     override func viewWillAppear(_ animated: Bool) {

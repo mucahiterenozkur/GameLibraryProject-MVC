@@ -20,8 +20,15 @@ class DetailedGamesViewController: UIViewController {
         super.viewDidLoad()
         title = gameModel.name
         
+        /// cretaed new one and assign it to existed one, wanted to customize a bit
+        let backButton = UIBarButtonItem()
+//        backButton.title = "My Back Button Title"
+        backButton.tintColor = .systemOrange
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        
         if gameModel.isFav {
-            favoriteBarButtonItem.tintColor = UIColor.red
+            favoriteBarButtonItem.tintColor = UIColor.systemOrange
         }
         
         imageView.image = UIImage(named: "PosterPlaceholder")
@@ -42,7 +49,7 @@ class DetailedGamesViewController: UIViewController {
                 }
                 if let videoGameDetail = videoGameDetail {
                     self.detailTextView.text =
-                        ("\(videoGameDetail.nameOriginal)\n" + "Release Date: \(videoGameDetail.released)\n" + "Metacritic Rate: \(videoGameDetail.metacritic)\n" + "\(videoGameDetail.welcomeDescription)").replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+                    ("\(videoGameDetail.nameOriginal)\n\n" + "Release Date: \(videoGameDetail.released)\n" + "Metacritic Rate: \(videoGameDetail.metacritic)\n\n" + "\(videoGameDetail.welcomeDescription)").replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
                 }
             }
         }
@@ -70,7 +77,7 @@ class DetailedGamesViewController: UIViewController {
                 print("Could not be deleted!")
             }
         } else {
-            favoriteBarButtonItem.tintColor = UIColor.red
+            favoriteBarButtonItem.tintColor = UIColor.systemOrange
             
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             

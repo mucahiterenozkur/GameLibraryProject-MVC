@@ -27,6 +27,7 @@ class FavouriteGamesViewController: UIViewController {
         searchBar.delegate = self
         collectionView.restore()
         flowLayout.minimumLineSpacing = 10
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemOrange]
     }
     
     override func viewWillAppear(_ animated: Bool) {
