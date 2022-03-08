@@ -13,7 +13,7 @@
         <!--Detailed Games View Controller-->
         <scene sceneID="KrR-bu-UPk">
             <objects>
-                <viewController storyboardIdentifier="GameDetail" id="Vxr-hx-oPa" customClass="DetailedGamesViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDetail" id="Vxr-hx-oPa" customClass="DetailedGamesViewController" customModule="VideoGamesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O2C-Ee-TwQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,7 @@
         <!--Favourite Games View Controller-->
         <scene sceneID="7U0-qe-jRB">
             <objects>
-                <viewController id="aVO-1k-ZEZ" customClass="FavouriteGamesViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aVO-1k-ZEZ" customClass="FavouriteGamesViewController" customModule="VideoGamesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jnr-zf-g7e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="FavoriteGameCell" id="p4b-Qb-PZY" customClass="GameCollectionViewCell" customModule="VideoGames" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="FavoriteGameCell" id="p4b-Qb-PZY" customClass="GameCollectionViewCell" customModule="VideoGamesApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="10" width="204" height="267"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="lCx-8K-Xfj">
@@ -206,7 +206,7 @@
         <!--Display Games View Controller-->
         <scene sceneID="a14-Jv-uQj">
             <objects>
-                <viewController id="7Kb-QB-up7" customClass="DisplayGamesViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7Kb-QB-up7" customClass="DisplayGamesViewController" customModule="VideoGamesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rub-HX-Ww8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,7 +231,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="GameCell" id="t7c-J3-Oet" customClass="GameCollectionViewCell" customModule="VideoGames" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="GameCell" id="t7c-J3-Oet" customClass="GameCollectionViewCell" customModule="VideoGamesApp" customModuleProvider="target">
                                         <rect key="frame" x="20.5" y="10" width="373" height="139"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="0P6-uH-k3U">
@@ -348,7 +348,7 @@
         <!--Game Page View Controller-->
         <scene sceneID="hUE-q8-0xv">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Puv-ak-3ab" customClass="GamePageViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Puv-ak-3ab" customClass="GamePageViewController" customModule="VideoGamesApp" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcw-Mf-wUw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-249" y="-964"/>

@@ -1,8 +1,8 @@
 //
 //  FavoritesViewController.swift
-//  VideoGames
+//  VideoGamesApp
 //
-//  Created by Gizem Boskan on 14.07.2021.
+//  Created by Mücahit Eren Özkur on 6.03.2022.
 //
 
 import UIKit
@@ -93,7 +93,7 @@ extension FavouriteGamesViewController:  UICollectionViewDelegate, UICollectionV
         cell.name?.text = "\(game.name)\n" + "Rating: \(game.rating)\n" + "Release Date: \(game.released.prefix(4))"
         
         cell.gameImageView?.image = UIImage(named: "PosterPlaceholder")
-        GameRequest.downloadGameImage(path: game.backgroundImage){ data, error in
+        GameRequest.getGameImage(path: game.backgroundImage){ data, error in
             guard let data = data else {
                 return
             }

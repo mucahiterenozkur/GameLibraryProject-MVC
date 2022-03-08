@@ -1,15 +1,15 @@
 //
 //  GamePageViewController.swift
-//  VideoGames
+//  VideoGamesApp
 //
-//  Created by Gizem Boskan on 11.07.2021.
+//  Created by Mücahit Eren Özkur on 6.03.2022.
 //
 
 import UIKit
 
 class GamePageView: UIImageView {
     func setImage(from urlString: String) {
-        GameRequest.downloadGameImage(path: urlString){ data, error in
+        GameRequest.getGameImage(path: urlString){ data, error in
             DispatchQueue.main.async {
                 guard let data = data else { return }
                 self.image = UIImage(data: data)

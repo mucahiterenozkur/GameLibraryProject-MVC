@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
-//  VideoGames
+//  DisplayGamesViewController.swift
+//  VideoGamesApp
 //
-//  Created by Gizem Boskan on 11.07.2021.
+//  Created by Mücahit Eren Özkur on 6.03.2022.
 //
 
 import UIKit
@@ -86,6 +86,7 @@ class DisplayGamesViewController: UIViewController {
             print("Error")
         }
     }
+    
     private func getVideoGames(_ pageNumber: Int) {
         GameRequest.getGames(page: pageNumber) { result, error in
             DispatchQueue.main.async {
@@ -167,6 +168,7 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
         }
         return listSource.count
     }
+    
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCollectionViewCell
         
@@ -182,7 +184,7 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
         cell.name?.text = "\(game.name)\n" + "Rating: \(game.rating)\n" + "Release Date: \(game.released.prefix(4))"
         
         cell.gameImageView?.image = UIImage(named: "PosterPlaceholder")
-        GameRequest.downloadGameImage(path: game.backgroundImage){ data, error in
+        GameRequest.getGameImage(path: game.backgroundImage){ data, error in
             guard let data = data else {
                 return
             }

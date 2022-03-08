@@ -1,8 +1,8 @@
 //
 //  VideoGameResults.swift
-//  VideoGames
+//  VideoGamesApp
 //
-//  Created by Gizem Boskan on 14.07.2021.
+//  Created by Mücahit Eren Özkur on 6.03.2022.
 //
 
 import Foundation

@@ -1,8 +1,8 @@
 //
-//  DetailViewController.swift
-//  VideoGames
+//  DetailedGamesViewController.swift
+//  VideoGamesApp
 //
-//  Created by Gizem Boskan on 14.07.2021.
+//  Created by Mücahit Eren Özkur on 6.03.2022.
 //
 
 import UIKit
@@ -27,7 +27,7 @@ class DetailedGamesViewController: UIViewController {
         }
         
         imageView.image = UIImage(named: "PosterPlaceholder")
-        GameRequest.downloadGameImage(path: game.backgroundImage) { data, error in
+        GameRequest.getGameImage(path: game.backgroundImage) { data, error in
             guard let data = data else {
                 return
             }

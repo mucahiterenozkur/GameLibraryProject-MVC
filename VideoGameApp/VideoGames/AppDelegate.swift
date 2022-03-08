@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  VideoGames
+//  VideoGamesApp
 //
 //  Created by Mücahit Eren Özkur on 6.03.2022.
 //
