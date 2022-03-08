@@ -2,7 +2,7 @@
 //  VideoGamesTests.swift
 //  VideoGamesTests
 //
-//  Created by Gizem Boskan on 11.07.2021.
+//  Created by Mücahit Eren Özkur on 6.03.2022.
 //
 
 import XCTest

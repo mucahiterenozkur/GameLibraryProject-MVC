@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class DisplayGamesViewController: UIViewController {
-    // MARK: - Properties
+    /// References
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var flowLayout: UICollectionViewFlowLayout!
@@ -17,35 +17,35 @@ class DisplayGamesViewController: UIViewController {
     @IBOutlet var pageVCHeightConstrait: NSLayoutConstraint!
     @IBOutlet var searchBarBottomConstraint: NSLayoutConstraint!
     @IBOutlet var collectionViewTopConstraint: NSLayoutConstraint!
-    lazy var gamePageViewController: GamePageViewController = {
-        return children.lazy.compactMap({ $0 as? GamePageViewController }).first!
-    }()
-    var filteredVideoGames = [GameModel]()
     
-    private var initialCollectionY: CGFloat = 0
-    private var updatedCollectionY: CGFloat = 0
-    var isFiltering: Bool = false  {
+    /// Private properties
+    private var initialY: CGFloat = 0
+    private var updatedY: CGFloat = 0
+    private var currentPage: Int = 1
+    private var isLoadingList: Bool = false
+    private var favouriteGameIDs = [Int]()
+    private var filteredVideoGames = [GameModel]()
+    private var dataSource = [GameModel]() // All video games
+    private var pageSource = [GameModel]() // Page controller games
+    private var listSource = [GameModel]() // Collection games
+    private var isFiltering: Bool = false  {
         didSet{
             if isFiltering == true {
                 pageView.isHidden = true
-                collectionView.center.y = updatedCollectionY
+                collectionView.center.y = updatedY
             }else {
                 pageView.isHidden = false
-                collectionView.center.y = initialCollectionY
+                collectionView.center.y = initialY
             }
         }
     }
     
-    var currentPage: Int = 1
-    var isLoadingList: Bool = false
+    /// Lazy properties
+    lazy var gamePageViewController: GamePageViewController = {
+        return children.lazy.compactMap({ $0 as? GamePageViewController }).first!
+    }()
     
     
-    var dataSource = [GameModel]() // All video games
-    var pageSource = [GameModel]() // Page controller games
-    var listSource = [GameModel]() // Collection games
-    
-    var favVideoGameIds = [Int]()
-    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -54,40 +54,17 @@ class DisplayGamesViewController: UIViewController {
         loadMoreGames()
         collectionView.restore()
         flowLayout.minimumLineSpacing = 10
-        initialCollectionY = collectionView.center.y
-        updatedCollectionY = initialCollectionY - pageView.frame.height - 20
+        initialY = collectionView.center.y
+        updatedY = initialY - pageView.frame.height - 20
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getFavorites()
-        
+        getFavouriteGames()
     }
     
-    // MARK: - Helpers
     
-    /// to get favorites ids from local persistance.
-    private func getFavorites() {
-        favVideoGameIds.removeAll()
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteVideoGames")
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    
-                    guard let favoriteGameId = result.value(forKey: "favoriteGameId") as? Int else { return }
-                    self.favVideoGameIds.append(favoriteGameId)
-                    checkFavoriteUpdates()
-                }
-            }
-        } catch {
-            print("Error")
-        }
-    }
-    
-    private func getVideoGames(_ pageNumber: Int) {
+    private func getGames(with pageNumber: Int) {
         GameRequest.getGames(page: pageNumber) { result, error in
             DispatchQueue.main.async {
                 if error != nil {
@@ -95,36 +72,20 @@ class DisplayGamesViewController: UIViewController {
                     return
                 }
                 
-                // convert DTO to the UI Model
-                let mappedResult = result.map({ GameModel(id: $0.id, rating: $0.rating, released: $0.released, metacritic: $0.metacritic, name: $0.name, backgroundImage: $0.backgroundImage, isFav: self.favVideoGameIds.contains($0.id))
+                let game = result.map({ GameModel(id: $0.id, rating: $0.rating, released: $0.released, metacritic: $0.metacritic, name: $0.name, backgroundImage: $0.backgroundImage, isFav: self.favouriteGameIDs.contains($0.id))
                 })
+                
                 if let secondTab = (self.tabBarController?.viewControllers?[1]),
                    let navVC = secondTab as? UINavigationController,
                    let favVC = navVC.viewControllers[0] as? FavouriteGamesViewController {
-                    favVC.updateFavGames(games: mappedResult)
+                    favVC.updateFavGames(games: game)
                 }
                 
-                self.dataSource.append(contentsOf: mappedResult)
+                self.dataSource.append(contentsOf: game)
                 self.adjustDatasources()
                 self.isLoadingList = false
             }
         }
-    }
-    func loadMoreGames(){
-        if currentPage <= 500 {
-            currentPage += 1
-            getVideoGames(currentPage)
-        }
-    }
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingList){
-            self.isLoadingList = true
-            self.loadMoreGames()
-        }
-    }
-    
-    func createPageVC() {
-        gamePageViewController.populateItems(gameSource: pageSource)
     }
     
     func adjustDatasources() {
@@ -148,6 +109,32 @@ class DisplayGamesViewController: UIViewController {
         self.createPageVC()
     }
     
+    func createPageVC() {
+        gamePageViewController.populateItems(gameSource: pageSource)
+    }
+    
+    /// to get favorites ids from local persistance.
+    private func getFavouriteGames() {
+        favouriteGameIDs.removeAll()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteVideoGames")
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    
+                    guard let favoriteGameId = result.value(forKey: "favoriteGameId") as? Int else { return }
+                    self.favouriteGameIDs.append(favoriteGameId)
+                    checkFavoriteUpdates()
+                }
+            }
+        } catch {
+            print("Error")
+        }
+    }
+    
     private func checkFavoriteUpdates() {
         if !dataSource.isEmpty {
             adjustDatasources()
@@ -158,8 +145,25 @@ class DisplayGamesViewController: UIViewController {
             }
         }
     }
+    
+    func loadMoreGames(){
+        if currentPage <= 10000 {
+            currentPage += 1
+            getGames(with: currentPage)
+        }
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingList){
+            self.isLoadingList = true
+            self.loadMoreGames()
+        }
+    }
+
 }
-// MARK: - UICollectionViewDataSource and Delegate
+
+// MARK: - EXTENSIONS
+
 extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -211,13 +215,12 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
             }else {
                 games = listSource
             }
-            vc.game = games[indexPath.row]
+            vc.gameModel = games[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
 
-// MARK: - UISearchBarDelegate
 extension DisplayGamesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -264,7 +267,6 @@ extension DisplayGamesViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - Custom Empty View
 extension UICollectionView {
     
     func setEmptyView(title: String, message: String){

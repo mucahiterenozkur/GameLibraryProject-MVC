@@ -7,33 +7,45 @@
 
 import UIKit
 
-class GamePageView: UIImageView {
-    func setImage(from urlString: String) {
-        GameRequest.getGameImage(path: urlString){ data, error in
-            DispatchQueue.main.async {
-                guard let data = data else { return }
-                self.image = UIImage(data: data)
-            }
-        }
-    }
-}
-
 class GamePageViewController: UIPageViewController {
     fileprivate var items: [UIViewController] = []
-    
     private var gameSource: [GameModel]?
     private var currentIndex: Int?
-    var index = 0
-    var counter = 0
+    private var index = 0
+    private var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         delegate = self
         decoratePageControl()
-        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goDetail(_:))))
         Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
+    }
+    
+    fileprivate func decoratePageControl() {
+        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [GamePageViewController.self])
+        pc.currentPageIndicatorTintColor = .orange
+        pc.pageIndicatorTintColor = .gray
+    }
+    
+    @objc func goDetail(_ gesture: UITapGestureRecognizer) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "GameDetail") as? DetailedGamesViewController,
+           let currentIndex = self.currentIndex,
+           let gameSource = self.gameSource {
+            vc.gameModel = gameSource[currentIndex]
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    @objc func changeImage(){
+        goToNextPage()
+    }
+    
+    func goToNextPage() {
+        guard let currentViewController = self.viewControllers?.first else { return }
+        guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
+        setViewControllers([nextViewController], direction: .forward, animated: false, completion: nil)
     }
     
     func populateItems(gameSource: [GameModel]) {
@@ -52,33 +64,20 @@ class GamePageViewController: UIPageViewController {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
     }
-    @objc func changeImage(){
-        goToNextPage()
-    }
     
-    func goToNextPage() {
-        guard let currentViewController = self.viewControllers?.first else { return }
-        guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
-        setViewControllers([nextViewController], direction: .forward, animated: false, completion: nil)
-    }
-    
-    fileprivate func decoratePageControl() {
-        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [GamePageViewController.self])
-        pc.currentPageIndicatorTintColor = .orange
-        pc.pageIndicatorTintColor = .gray
-    }
-    
-    @objc func goDetail(_ gesture: UITapGestureRecognizer) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "GameDetail") as? DetailedGamesViewController,
-           let currentIndex = self.currentIndex,
-           let gameSource = self.gameSource {
-            vc.game = gameSource[currentIndex]
-            navigationController?.pushViewController(vc, animated: true)
+}
+
+class GamePageView: UIImageView {
+    func setImage(from urlString: String) {
+        GameRequest.getGameImage(path: urlString){ data, error in
+            DispatchQueue.main.async {
+                guard let data = data else { return }
+                self.image = UIImage(data: data)
+            }
         }
     }
 }
 
-// MARK: - DataSource
 extension GamePageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func presentationCount(for _: UIPageViewController) -> Int {
@@ -90,7 +89,6 @@ extension GamePageViewController: UIPageViewControllerDataSource, UIPageViewCont
               let firstViewControllerIndex = items.firstIndex(of: firstViewController) else {
             return 0
         }
-        
         return firstViewControllerIndex
     }
     

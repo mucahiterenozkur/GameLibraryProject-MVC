@@ -1,11 +1,6 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
-
 import Foundation
 
-// MARK: - VideoGameDetail
+// MARK: - GameDetail
 struct GameDetail: Codable {
     let id: Int
     let slug, name, nameOriginal, welcomeDescription: String

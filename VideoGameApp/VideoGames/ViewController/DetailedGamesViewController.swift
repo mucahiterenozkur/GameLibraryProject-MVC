@@ -9,25 +9,23 @@ import UIKit
 import CoreData
 class DetailedGamesViewController: UIViewController {
     
-    // MARK: - Properties
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var detailTextView: UITextView!
     @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
     
-    var game: GameModel!
-    var videoGame: GameResult!
+    var gameModel: GameModel!
+    var game: GameResult!
     
-    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = game.name
+        title = gameModel.name
         
-        if game.isFav {
+        if gameModel.isFav {
             favoriteBarButtonItem.tintColor = UIColor.red
         }
         
         imageView.image = UIImage(named: "PosterPlaceholder")
-        GameRequest.getGameImage(path: game.backgroundImage) { data, error in
+        GameRequest.getGameImage(path: gameModel.backgroundImage) { data, error in
             guard let data = data else {
                 return
             }
@@ -36,7 +34,7 @@ class DetailedGamesViewController: UIViewController {
         }
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.lightGray.cgColor
-        GameRequest.getGameDetails(id: String(game.id)) {videoGameDetail, error in
+        GameRequest.getGameDetails(id: String(gameModel.id)) {videoGameDetail, error in
             DispatchQueue.main.async {
                 if error != nil {
                     self.showErrorAlert(message: "could not fetch the details")
@@ -49,16 +47,15 @@ class DetailedGamesViewController: UIViewController {
             }
         }
     }
-    // MARK: - Helpers
     
     @IBAction func favoriteBarButtonItemTapped(){
-        if game.isFav {
+        if gameModel.isFav {
             favoriteBarButtonItem.tintColor = UIColor.gray
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"FavoriteVideoGames")
             
-            fetchRequest.predicate = NSPredicate(format: "favoriteGameId = %@", "\(game.id)")
+            fetchRequest.predicate = NSPredicate(format: "favoriteGameId = %@", "\(gameModel.id)")
             do
             {
                 let fetchedResults =  try context.fetch(fetchRequest) as? [NSManagedObject]
@@ -80,7 +77,7 @@ class DetailedGamesViewController: UIViewController {
             let context = appDelegate.persistentContainer.viewContext
             let newGame = NSEntityDescription.insertNewObject(forEntityName: "FavoriteVideoGames", into: context)
             
-            newGame.setValue(game.id, forKey: "favoriteGameId")
+            newGame.setValue(gameModel.id, forKey: "favoriteGameId")
             
             do {
                 try context.save()
@@ -88,7 +85,7 @@ class DetailedGamesViewController: UIViewController {
                 print("Could not be saved!")
             }
         }
-        game.isFav.toggle()
+        gameModel.isFav.toggle()
     }
 }
 

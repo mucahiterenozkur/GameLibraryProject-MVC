@@ -9,18 +9,17 @@ import UIKit
 import CoreData
 
 class FavouriteGamesViewController: UIViewController {
-    // MARK: - Properties
+    
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var collectionView: UICollectionView!
     
-    var filteredVideoGames = [GameModel]()
-    var isFiltering: Bool = false
-    var dataSource = [GameModel]() // Collection games
-    var gamesSource = [GameModel]()
-    var favVideoGameIds = [Int]()
+    private var filteredVideoGames = [GameModel]()
+    private var isFiltering: Bool = false
+    private var dataSource = [GameModel]() // Collection games
+    private var gamesSource = [GameModel]()
+    private var favouriteGameIDS = [Int]()
     
-    // MARK: - UIViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -29,13 +28,14 @@ class FavouriteGamesViewController: UIViewController {
         collectionView.restore()
         flowLayout.minimumLineSpacing = 10
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getFavorites()
+        getFavouriteGames()
     }
     
-    private func getFavorites() {
-        favVideoGameIds.removeAll()
+    private func getFavouriteGames() {
+        favouriteGameIDS.removeAll()
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteVideoGames")
@@ -46,7 +46,7 @@ class FavouriteGamesViewController: UIViewController {
                 for result in results as! [NSManagedObject] {
                     
                     guard let favoriteGameId = result.value(forKey: "favoriteGameId") as? Int else { return }
-                    self.favVideoGameIds.append(favoriteGameId)
+                    self.favouriteGameIDS.append(favoriteGameId)
                     checkFavoriteUpdates()
                 }
             }
@@ -58,7 +58,7 @@ class FavouriteGamesViewController: UIViewController {
     private func checkFavoriteUpdates() {
         if !gamesSource.isEmpty {
             dataSource.removeAll()
-            dataSource.append(contentsOf: gamesSource.filter({favVideoGameIds.contains($0.id)}))
+            dataSource.append(contentsOf: gamesSource.filter({favouriteGameIDS.contains($0.id)}))
             collectionView.reloadData()
         }
     }
@@ -69,7 +69,6 @@ class FavouriteGamesViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource and Delegate
 extension FavouriteGamesViewController:  UICollectionViewDelegate, UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -120,14 +119,13 @@ extension FavouriteGamesViewController:  UICollectionViewDelegate, UICollectionV
             }else {
                 games = dataSource
             }
-            vc.game = games[indexPath.row]
-            vc.game.isFav = true
+            vc.gameModel = games[indexPath.row]
+            vc.gameModel.isFav = true
             navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
 
-// MARK: - UISearchBarDelegate
 extension FavouriteGamesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -141,6 +139,7 @@ extension FavouriteGamesViewController: UISearchBarDelegate {
                 return
             }
         }
+        
         if searchBar.text!.count <= 3 {
             isFiltering = false
             self.collectionView.restore()

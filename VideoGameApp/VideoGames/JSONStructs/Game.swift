@@ -1,5 +1,5 @@
 //
-//  VideoGameResults.swift
+//  Game.swift
 //  VideoGamesApp
 //
 //  Created by Mücahit Eren Özkur on 6.03.2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - VideoGameResults
+// MARK: - Game
 struct Game: Codable {
     let count: Int
     let next, previous: String
@@ -52,7 +52,7 @@ struct YearYear: Codable {
     let nofollow: Bool
 }
 
-// MARK: - VideoGame
+// MARK: - GameResult
 struct GameResult: Codable {
     let id: Int
     let slug, name, released: String
