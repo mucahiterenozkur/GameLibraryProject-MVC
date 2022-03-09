@@ -105,7 +105,7 @@ extension FavouriteGamesViewController:  UICollectionViewDelegate, UICollectionV
         cell.gameImageView.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
         cell.gameImageView.layer.borderWidth = 2
         cell.gameImageView.layer.cornerRadius = 3
-        cell.layer.cornerRadius = 7
+        cell.layer.cornerRadius = 20
         
         return cell
     }

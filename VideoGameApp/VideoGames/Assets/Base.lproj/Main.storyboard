@@ -20,13 +20,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R2M-dI-ADA">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="10" y="88" width="394" height="774"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-us-mzF" userLabel="Game Poster">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="377"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="377"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs0-dh-mDh" userLabel="Game Detail">
-                                        <rect key="frame" x="0.0" y="397" width="414" height="377"/>
+                                        <rect key="frame" x="0.0" y="397" width="394" height="377"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="systemOrangeColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -49,9 +49,9 @@
                         <viewLayoutGuide key="safeArea" id="ltg-R9-DMr"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="R2M-dI-ADA" firstAttribute="leading" secondItem="ltg-R9-DMr" secondAttribute="leading" id="3dO-d2-aKN"/>
+                            <constraint firstItem="R2M-dI-ADA" firstAttribute="leading" secondItem="ltg-R9-DMr" secondAttribute="leading" constant="10" id="3dO-d2-aKN"/>
                             <constraint firstItem="R2M-dI-ADA" firstAttribute="top" secondItem="ltg-R9-DMr" secondAttribute="top" id="AJV-54-fIk"/>
-                            <constraint firstItem="ltg-R9-DMr" firstAttribute="trailing" secondItem="R2M-dI-ADA" secondAttribute="trailing" id="Cdu-KT-Tgb"/>
+                            <constraint firstItem="ltg-R9-DMr" firstAttribute="trailing" secondItem="R2M-dI-ADA" secondAttribute="trailing" constant="10" id="Cdu-KT-Tgb"/>
                             <constraint firstItem="ltg-R9-DMr" firstAttribute="bottom" secondItem="R2M-dI-ADA" secondAttribute="bottom" id="EH0-0E-pV6"/>
                             <constraint firstItem="R2M-dI-ADA" firstAttribute="centerX" secondItem="ltg-R9-DMr" secondAttribute="centerX" id="gNW-he-YdF"/>
                             <constraint firstItem="R2M-dI-ADA" firstAttribute="centerY" secondItem="ltg-R9-DMr" secondAttribute="centerY" id="l1E-cA-CaS"/>
@@ -103,15 +103,15 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="GMW-5e-1hF">
                                                     <rect key="frame" x="0.0" y="215" width="204" height="45"/>
-                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="WbG-Xa-CXn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" systemColor="systemOrangeColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="tyh-KV-0pS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="tyh-KV-0pS">
                                                     <rect key="frame" x="0.0" y="0.0" width="204" height="215"/>
                                                 </imageView>
                                             </subviews>
@@ -127,7 +127,7 @@
                                                 <constraint firstItem="tyh-KV-0pS" firstAttribute="top" secondItem="lCx-8K-Xfj" secondAttribute="top" id="zdO-SZ-V8Y"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="204" height="267"/>
                                         <connections>
                                             <outlet property="gameImageView" destination="tyh-KV-0pS" id="iXA-it-mjF"/>
@@ -291,6 +291,7 @@
                         <constraints>
                             <constraint firstItem="q2f-mb-ht4" firstAttribute="trailing" secondItem="i5g-1p-Oy3" secondAttribute="trailing" constant="8" id="2tH-HG-VHD"/>
                             <constraint firstItem="i5g-1p-Oy3" firstAttribute="leading" secondItem="q2f-mb-ht4" secondAttribute="leading" constant="8" id="9KX-LI-TaP"/>
+                            <constraint firstItem="XwI-WC-3Hb" firstAttribute="centerX" secondItem="Rub-HX-Ww8" secondAttribute="centerX" id="C3l-Pj-Z6h"/>
                             <constraint firstItem="XwI-WC-3Hb" firstAttribute="leading" secondItem="q2f-mb-ht4" secondAttribute="leading" constant="20" id="W9C-eI-sWi"/>
                             <constraint firstItem="XwI-WC-3Hb" firstAttribute="top" secondItem="i5g-1p-Oy3" secondAttribute="bottom" constant="20" id="bwl-bR-YwK"/>
                             <constraint firstItem="i5g-1p-Oy3" firstAttribute="top" secondItem="q2f-mb-ht4" secondAttribute="top" constant="8" id="gCP-Y5-bH9"/>

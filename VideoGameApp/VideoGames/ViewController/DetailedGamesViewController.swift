@@ -41,6 +41,8 @@ class DetailedGamesViewController: UIViewController {
         }
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.lightGray.cgColor
+        imageView.layer.cornerRadius = 20
+        
         GameRequest.getGameDetails(id: String(gameModel.id)) {videoGameDetail, error in
             DispatchQueue.main.async {
                 if error != nil {
