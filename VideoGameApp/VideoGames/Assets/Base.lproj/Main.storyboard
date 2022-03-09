@@ -220,7 +220,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="uKQ-i0-WvY"/>
                                 </constraints>
-                                <color key="tintColor" red="1" green="0.58012623600000002" blue="0.012866315830000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YJg-D2-clK">
