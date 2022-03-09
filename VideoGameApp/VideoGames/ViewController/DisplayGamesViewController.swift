@@ -57,6 +57,11 @@ class DisplayGamesViewController: UIViewController {
         initialY = collectionView.center.y
         updatedY = initialY - pageView.frame.height - 20
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemOrange]
+        searchBar.searchTextField.textColor = .white
+        searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search a game..", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.6)])
+        pageView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 15)
+
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -186,7 +191,11 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
         
         let game = games[indexPath.row]
         cell.name.numberOfLines = 0
+        cell.name.layer.masksToBounds = true
+        cell.name.layer.cornerRadius = 20
         cell.name?.text = "\(game.name)\n" + "Rating: \(game.rating)\n" + "Release Date: \(game.released.prefix(4))"
+        
+        //cell.backgroundColor = .systemOrange
         
         cell.gameImageView?.image = UIImage(named: "PosterPlaceholder")
         GameRequest.getGameImage(path: game.backgroundImage){ data, error in
@@ -200,8 +209,8 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
         
         cell.gameImageView.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
         cell.gameImageView.layer.borderWidth = 2
-        cell.gameImageView.layer.cornerRadius = 3
-        cell.layer.cornerRadius = 7
+        cell.gameImageView.layer.cornerRadius = 20
+        cell.layer.cornerRadius = 20
         
         return cell
     }
