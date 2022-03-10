@@ -25,11 +25,11 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-us-mzF" userLabel="Game Poster">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="377"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs0-dh-mDh" userLabel="Game Detail">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs0-dh-mDh" userLabel="Game Detail">
                                         <rect key="frame" x="0.0" y="397" width="394" height="377"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.040000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -68,6 +68,7 @@
                     <connections>
                         <outlet property="detailTextView" destination="Xs0-dh-mDh" id="evX-KE-BoT"/>
                         <outlet property="favoriteBarButtonItem" destination="kGz-vf-Tnw" id="2A4-25-8Y0"/>
+                        <outlet property="gameDetailTextView" destination="Xs0-dh-mDh" id="PIz-zF-nb2"/>
                         <outlet property="imageView" destination="CRC-us-mzF" id="LRh-71-9wr"/>
                     </connections>
                 </viewController>
@@ -102,17 +103,17 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="GMW-5e-1hF">
-                                                    <rect key="frame" x="0.0" y="215" width="204" height="45"/>
+                                                    <rect key="frame" x="0.0" y="207" width="204" height="60"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="45" id="WbG-Xa-CXn"/>
+                                                        <constraint firstAttribute="height" constant="60" id="WbG-Xa-CXn"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="50"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="65"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="tyh-KV-0pS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="215"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="207"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="secondaryLabelColor"/>
@@ -120,7 +121,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="tyh-KV-0pS" secondAttribute="trailing" id="4WS-q3-ZiO"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GMW-5e-1hF" secondAttribute="trailing" id="5ke-bi-EoD"/>
                                                 <constraint firstItem="tyh-KV-0pS" firstAttribute="leading" secondItem="lCx-8K-Xfj" secondAttribute="leading" id="Au3-Gd-qda"/>
-                                                <constraint firstAttribute="bottom" secondItem="GMW-5e-1hF" secondAttribute="bottom" constant="7" id="Ma4-dZ-shx"/>
+                                                <constraint firstAttribute="bottom" secondItem="GMW-5e-1hF" secondAttribute="bottom" id="Ma4-dZ-shx"/>
                                                 <constraint firstItem="GMW-5e-1hF" firstAttribute="leading" secondItem="lCx-8K-Xfj" secondAttribute="leading" id="VSR-FK-Nh7"/>
                                                 <constraint firstItem="GMW-5e-1hF" firstAttribute="centerX" secondItem="lCx-8K-Xfj" secondAttribute="centerX" id="kJB-V2-Xe9"/>
                                                 <constraint firstItem="GMW-5e-1hF" firstAttribute="top" secondItem="tyh-KV-0pS" secondAttribute="bottom" id="rMd-c4-Tex"/>
@@ -256,7 +257,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="4rl-Dp-U5B">
                                                     <rect key="frame" x="162" y="4" width="201" height="131"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

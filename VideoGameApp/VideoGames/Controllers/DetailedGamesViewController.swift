@@ -12,6 +12,7 @@ class DetailedGamesViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var detailTextView: UITextView!
     @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var gameDetailTextView: UITextView!
     
     var gameModel: GameModel!
     var game: GameResult!
@@ -19,6 +20,7 @@ class DetailedGamesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = gameModel.name
+        gameDetailTextView.layer.cornerRadius = 20
         
         /// cretaed new one and assign it to existed one, wanted to customize a bit
         let backButton = UIBarButtonItem()
