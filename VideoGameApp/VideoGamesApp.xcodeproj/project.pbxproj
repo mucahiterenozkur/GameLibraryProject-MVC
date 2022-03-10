@@ -128,7 +128,7 @@
 				8E4B5B9C269EEAF300A06BCF /* Model */,
 				8E4B5B9D269EEB0000A06BCF /* Service */,
 				8E4B5B9F269EEB1700A06BCF /* JSONStructs */,
-				8E4B5BA1269EEB3500A06BCF /* ViewController */,
+				8E4B5BA1269EEB3500A06BCF /* Controllers */,
 				8E4B5BA2269EEB3E00A06BCF /* Assets */,
 			);
 			path = VideoGames;
@@ -179,7 +179,7 @@
 			path = JSONStructs;
 			sourceTree = "<group>";
 		};
-		8E4B5BA1269EEB3500A06BCF /* ViewController */ = {
+		8E4B5BA1269EEB3500A06BCF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				8E4B5B09269B39F800A06BCF /* DisplayGamesViewController.swift */,
@@ -188,7 +188,7 @@
 				8E4B5BA5269EEBE100A06BCF /* DetailedGamesViewController.swift */,
 				8E1FF1C926A8660800978B28 /* UIViewController+Extension.swift */,
 			);
-			path = ViewController;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		8E4B5BA2269EEB3E00A06BCF /* Assets */ = {
