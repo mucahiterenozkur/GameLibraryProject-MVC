@@ -117,7 +117,6 @@
 				8E4B5B07269B39F800A06BCF /* SceneDelegate.swift */,
 				A80D534A27DA428F004EF448 /* Extensions */,
 				A8EC720427D67F560054BC49 /* Cells */,
-				8E4B5B16269B39FB00A06BCF /* Info.plist */,
 				8E4B5B9C269EEAF300A06BCF /* Model */,
 				8E4B5B9D269EEB0000A06BCF /* Service */,
 				8E4B5B9F269EEB1700A06BCF /* JSONStructs */,
@@ -125,6 +124,7 @@
 				8E4B5B0B269B39F800A06BCF /* Main.storyboard */,
 				8E4B5B13269B39FB00A06BCF /* LaunchScreen.storyboard */,
 				8E4B5B11269B39FB00A06BCF /* Assets.xcassets */,
+				8E4B5B16269B39FB00A06BCF /* Info.plist */,
 			);
 			path = VideoGames;
 			sourceTree = "<group>";
