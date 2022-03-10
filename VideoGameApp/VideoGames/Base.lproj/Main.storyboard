@@ -22,7 +22,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R2M-dI-ADA">
                                 <rect key="frame" x="10" y="88" width="394" height="774"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-us-mzF" userLabel="Game Poster">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-us-mzF" userLabel="Game Poster">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="377"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xs0-dh-mDh" userLabel="Game Detail">
@@ -112,7 +112,7 @@
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="tyh-KV-0pS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tyh-KV-0pS">
                                                     <rect key="frame" x="0.0" y="0.0" width="204" height="207"/>
                                                 </imageView>
                                             </subviews>
@@ -261,7 +261,7 @@
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="PosterPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="GbK-rX-2LG">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="GbK-rX-2LG">
                                                     <rect key="frame" x="4" y="4" width="150" height="131"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="sL9-TR-4ou"/>
@@ -376,7 +376,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PosterPlaceholder" width="256" height="256"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <namedColor name="AccentColor">

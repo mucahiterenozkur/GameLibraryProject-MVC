@@ -157,7 +157,7 @@ extension FavouriteGamesViewController: UISearchBarDelegate {
         })
         
         if filteredVideoGames.isEmpty {
-            collectionView.setEmptyView(title: "Oops! Your search was not found.", message: "Search for another result!")
+            collectionView.setEmptyView(title: "\nSeriously, are you a gamer?", message: "What you are looking for doesn't even exist.")
         }else {
             collectionView.restore()
         }
@@ -177,17 +177,11 @@ extension FavouriteGamesViewController: UISearchBarDelegate {
 
 extension FavouriteGamesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 204, height: 267)
-        
-        
-//        let height = self.collectionView.frame.size.height
-//        let width = self.collectionView.frame.size.width
-//
-//        //return CGSize(width: width * 0.5, height: height * 0.5)
-//        //return CGSize(width: width * 0.5, height: height * 0.5)
-//        return CGSize(width: width / 2, height: 130)
-//
-//        //204-267
+//        return CGSize(width: 204, height: 267)
+//        let height = self.view.frame.size.height
+        let width = self.view.frame.size.width
+        return CGSize(width: width / 2.05, height: 250) // 2.05 for a little spacing
+
     }
 }
 
