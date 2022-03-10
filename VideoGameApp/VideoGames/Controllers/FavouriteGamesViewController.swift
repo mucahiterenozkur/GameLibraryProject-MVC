@@ -27,6 +27,9 @@ class FavouriteGamesViewController: UIViewController {
         searchBar.delegate = self
         collectionView.restore()
         flowLayout.minimumLineSpacing = 10
+        searchBar.searchTextField.textColor = .white
+        searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search a game..", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.6)])
+        UISearchBar.appearance().tintColor = .white // for cancel button
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemOrange]
     }
     
@@ -175,6 +178,16 @@ extension FavouriteGamesViewController: UISearchBarDelegate {
 extension FavouriteGamesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 204, height: 267)
+        
+        
+//        let height = self.collectionView.frame.size.height
+//        let width = self.collectionView.frame.size.width
+//
+//        //return CGSize(width: width * 0.5, height: height * 0.5)
+//        //return CGSize(width: width * 0.5, height: height * 0.5)
+//        return CGSize(width: width / 2, height: 130)
+//
+//        //204-267
     }
 }
 
