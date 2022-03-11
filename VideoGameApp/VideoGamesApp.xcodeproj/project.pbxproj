@@ -130,6 +130,7 @@
 				8E4B5B0B269B39F800A06BCF /* Main.storyboard */,
 				8E4B5B13269B39FB00A06BCF /* LaunchScreen.storyboard */,
 				8E4B5B11269B39FB00A06BCF /* Assets.xcassets */,
+				8E4B5B0E269B39F800A06BCF /* VideoGames.xcdatamodeld */,
 				8E4B5B16269B39FB00A06BCF /* Info.plist */,
 			);
 			path = VideoGames;
@@ -139,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				8E4B5BA7269EEC1E00A06BCF /* GameModel.swift */,
-				8E4B5B0E269B39F800A06BCF /* VideoGames.xcdatamodeld */,
 				A8B5D3A527DB76DA00A26E11 /* OnboardingSlide.swift */,
 			);
 			path = Model;
@@ -166,11 +166,11 @@
 		8E4B5BA1269EEB3500A06BCF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A8B5D3A127DB766A00A26E11 /* OnboardingViewController.swift */,
 				8E4B5B09269B39F800A06BCF /* DisplayGamesViewController.swift */,
 				BAEF614926ADE2F6003989A8 /* GamePageViewController.swift */,
 				8E4B5BA3269EEBD600A06BCF /* FavouriteGamesViewController.swift */,
 				8E4B5BA5269EEBE100A06BCF /* DetailedGamesViewController.swift */,
-				A8B5D3A127DB766A00A26E11 /* OnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -513,7 +513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 855777TBAB;
+				DEVELOPMENT_TEAM = AGS6TYDXG5;
 				INFOPLIST_FILE = VideoGames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -532,7 +532,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 855777TBAB;
+				DEVELOPMENT_TEAM = AGS6TYDXG5;
 				INFOPLIST_FILE = VideoGames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -51,8 +51,6 @@ class GameRequest {
                     return
                 }
                 
-//                print(String(decoding: data, as: UTF8.self))
-                
                 let decoder = JSONDecoder()
                 do {
                     let results = try decoder.decode(JSONType.self, from: data)

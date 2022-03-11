@@ -48,7 +48,7 @@ class DetailedGamesViewController: UIViewController {
         GameRequest.getGameDetails(id: String(gameModel.id)) {videoGameDetail, error in
             DispatchQueue.main.async {
                 if error != nil {
-                    self.showErrorAlert(message: "could not fetch the details")
+                    self.showErrorAlert(message: "Could not fetch the details")
                     return
                 }
                 if let videoGameDetail = videoGameDetail {

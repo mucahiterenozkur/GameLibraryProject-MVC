@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         var controller: UIViewController!
             
-        if UserDefaults.standard.hasOnboarded {
+        if UserDefaults.standard.hasOnboardedd {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             controller = storyboard.instantiateViewController(identifier: "tabBar") as! UITabBarController
         } else {

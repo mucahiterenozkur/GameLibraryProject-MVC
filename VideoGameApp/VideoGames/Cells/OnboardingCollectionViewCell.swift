@@ -18,9 +18,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     func setup(_ slide: OnboardingSlide) {
         slideImageView.image = slide.image
         slideTitleLbl.text = slide.title
-        //slideTitleLbl.textColor = .systemRed
         slideDescriptionLbl.text = slide.description
-        //slideDescriptionLbl.textColor = .systemRed
     }
     
 }

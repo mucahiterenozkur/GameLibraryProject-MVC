@@ -25,9 +25,9 @@ class DisplayGamesViewController: UIViewController {
     private var isLoadingList: Bool = false
     private var favouriteGameIDs = [Int]()
     private var filteredVideoGames = [GameModel]()
-    private var dataSource = [GameModel]() // All video games
-    private var pageSource = [GameModel]() // Page controller games
-    private var listSource = [GameModel]() // Collection games
+    private var allGames = [GameModel]()
+    private var pageControllerGames = [GameModel]()
+    private var collectionOfGames = [GameModel]()
     private var isFiltering: Bool = false  {
         didSet{
             if isFiltering == true {
@@ -45,7 +45,6 @@ class DisplayGamesViewController: UIViewController {
         return children.lazy.compactMap({ $0 as? GamePageViewController }).first!
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -60,8 +59,6 @@ class DisplayGamesViewController: UIViewController {
         searchBar.searchTextField.textColor = .white
         searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search a game..", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.6)])
         pageView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 15)
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,12 +66,11 @@ class DisplayGamesViewController: UIViewController {
         getFavouriteGames()
     }
     
-    
     private func getGames(with pageNumber: Int) {
         GameRequest.getGames(page: pageNumber) { result, error in
             DispatchQueue.main.async {
                 if error != nil {
-                    self.showErrorAlert(message: "something went wrong!")
+                    self.showErrorAlert(message: "Couldn't fetch the information.")
                     return
                 }
                 
@@ -87,28 +83,28 @@ class DisplayGamesViewController: UIViewController {
                     favVC.updateFavGames(games: game)
                 }
                 
-                self.dataSource.append(contentsOf: game)
-                self.adjustDatasources()
+                self.allGames.append(contentsOf: game)
+                self.adjustGames()
                 self.isLoadingList = false
             }
         }
     }
     
-    func adjustDatasources() {
+    func adjustGames() {
         filteredVideoGames.removeAll()
-        filteredVideoGames.append(contentsOf: dataSource)
+        filteredVideoGames.append(contentsOf: allGames)
         
-        if dataSource.count <= 3 {
-            pageSource.removeAll()
-            pageSource.append(contentsOf: dataSource)
+        if allGames.count <= 3 {
+            pageControllerGames.removeAll()
+            pageControllerGames.append(contentsOf: allGames)
         } else {
-            let gamePageSource = dataSource.prefix(3)
-            let gameListSource = dataSource.suffix(dataSource.count - 3)
+            let gamePageSource = allGames.prefix(3)
+            let gameListSource = allGames.suffix(allGames.count - 3)
             
-            pageSource.removeAll()
-            pageSource.append(contentsOf: gamePageSource)
-            listSource.removeAll()
-            listSource.append(contentsOf: gameListSource)
+            pageControllerGames.removeAll()
+            pageControllerGames.append(contentsOf: gamePageSource)
+            collectionOfGames.removeAll()
+            collectionOfGames.append(contentsOf: gameListSource)
         }
         
         self.collectionView.reloadData()
@@ -116,7 +112,7 @@ class DisplayGamesViewController: UIViewController {
     }
     
     func createPageVC() {
-        gamePageViewController.populateItems(gameSource: pageSource)
+        gamePageViewController.populateItems(gameSource: pageControllerGames)
     }
     
     /// to get favorites ids from local persistance.
@@ -142,8 +138,8 @@ class DisplayGamesViewController: UIViewController {
     }
     
     private func checkFavoriteUpdates() {
-        if !dataSource.isEmpty {
-            adjustDatasources()
+        if !allGames.isEmpty {
+            adjustGames()
             if isFiltering {
                 if let isEmpty = searchBar.text?.isEmpty, !isEmpty{
                     searchBar.delegate?.searchBar?(searchBar, textDidChange: searchBar.text!)
@@ -153,7 +149,7 @@ class DisplayGamesViewController: UIViewController {
     }
     
     func loadMoreGames(){
-        if currentPage <= 10000 {
+        if currentPage <= 500 {
             currentPage += 1
             getGames(with: currentPage)
         }
@@ -174,7 +170,7 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
         if isFiltering {
             return filteredVideoGames.count
         }
-        return listSource.count
+        return collectionOfGames.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -184,7 +180,7 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
         if isFiltering {
             games = filteredVideoGames
         }else {
-            games = listSource
+            games = collectionOfGames
         }
         
         let game = games[indexPath.row]
@@ -218,7 +214,7 @@ extension DisplayGamesViewController:  UICollectionViewDelegate, UICollectionVie
             if isFiltering{
                 games = filteredVideoGames
             }else {
-                games = listSource
+                games = collectionOfGames
             }
             vc.gameModel = games[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
@@ -247,7 +243,7 @@ extension DisplayGamesViewController: UISearchBarDelegate {
         }
         
         isFiltering = true
-        filteredVideoGames = dataSource.filter({ (game: GameModel) -> Bool in
+        filteredVideoGames = allGames.filter({ (game: GameModel) -> Bool in
             return game.name.lowercased().contains(searchText.lowercased())
         })
         

@@ -180,7 +180,7 @@ extension FavouriteGamesViewController: UICollectionViewDelegateFlowLayout {
 //        return CGSize(width: 204, height: 267)
 //        let height = self.view.frame.size.height
         let width = self.view.frame.size.width
-        return CGSize(width: width / 2.05, height: 250) // 2.05 for a little spacing
+        return CGSize(width: width / 3.05, height: 250) // 3.05 for a little spacing
 
     }
 }

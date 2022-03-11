@@ -51,7 +51,7 @@ class OnboardingViewController: UIViewController {
             let controller = storyboard?.instantiateViewController(identifier: "tabBar") as! UITabBarController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .crossDissolve
-            UserDefaults.standard.hasOnboarded = true
+            UserDefaults.standard.hasOnboardedd = true
             present(controller, animated: true, completion: nil)
         } else {
             currentPage += 1
