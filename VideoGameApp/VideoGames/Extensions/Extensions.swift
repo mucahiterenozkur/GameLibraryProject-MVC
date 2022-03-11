@@ -87,3 +87,32 @@ extension UICollectionView {
         self.backgroundView = nil
     }
 }
+
+extension UserDefaults {
+    private enum UserDefaultsKeys: String {
+        case hasOnboardeded
+    }
+    
+    var hasOnboarded: Bool {
+        get {
+            bool(forKey: UserDefaultsKeys.hasOnboardeded.rawValue)
+        }
+        
+        set {
+            setValue(newValue, forKey: UserDefaultsKeys.hasOnboardeded.rawValue)
+
+        }
+    }
+}
+
+extension UIViewController {
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
+    static func instantiate() -> Self {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return storyboard.instantiateViewController(identifier: identifier) as! Self
+    }
+}
