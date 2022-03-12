@@ -90,16 +90,16 @@ extension UICollectionView {
 
 extension UserDefaults {
     private enum UserDefaultsKeys: String {
-        case hasOnboardedd
+        case hasOnboard
     }
     
-    var hasOnboardedd: Bool {
+    var hasOnboard: Bool {
         get {
-            bool(forKey: UserDefaultsKeys.hasOnboardedd.rawValue)
+            bool(forKey: UserDefaultsKeys.hasOnboard.rawValue)
         }
         
         set {
-            setValue(newValue, forKey: UserDefaultsKeys.hasOnboardedd.rawValue)
+            setValue(newValue, forKey: UserDefaultsKeys.hasOnboard.rawValue)
 
         }
     }
