@@ -11,7 +11,7 @@ GameLibraryProject is fundamentally listing games that are in the past and the l
 ✔️ You can mark as favourite whichever game you want and then you can see them in a collection view all listed in your library <br>
 ✔️ Displaying the detail view of the game when you click, 
 
-👉 This was a project that I made during Turkcell Geleceği Yazanlar Bootcamp. <br><br>
+👉 This was a project that I made during Turkcell Geleceği Yazanlar Bootcamp.<br><br>
 
 https://user-images.githubusercontent.com/59232592/158024337-720dedb6-b114-497a-b989-9e3e03959977.mp4
 
